@@ -578,4 +578,9 @@ public partial class AdventureWorksContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    
+    public IQueryable<T> ExecuteStoredProcedure<T>(string sql, params object[] parameters)
+    {
+        return Database.SqlQueryRaw<T>(sql, parameters);
+    }
 }
